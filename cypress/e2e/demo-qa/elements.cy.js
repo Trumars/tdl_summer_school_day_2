@@ -8,7 +8,7 @@ context("Elements Page", () => {
     beforeEach(() => {
       TextBoxPage.visit();
     });
-    it("Filling in Text Boxes", () => {
+    it.only("Filling in Text Boxes", () => {
       TextBoxPage.Name.should("be.visible").type("Viesturs T");
       TextBoxPage.Email.should("be.visible").type("trumars@lasersharks.com");
       TextBoxPage.CurrentAddress.should("be.visible").type("Liepaja, Inzenieru iela 101B");
@@ -69,7 +69,7 @@ context("Elements Page", () => {
     // click submit button
     // search for the user based on previously added information
     // validate tha the user is visible
-    it.only("Web tables Scenario 2:", () =>{
+    it("Web tables Scenario 2:", () =>{
     // Delete all table rows
     // Validate that we see text - No rows found
     });
