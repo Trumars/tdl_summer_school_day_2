@@ -1,5 +1,7 @@
 import TextBoxPage from "../../pageObjects/textBoxPage";
 import CheckBoxPage from "../../pageObjects/checkBoxPage";
+import RadioButtonPage from "../../pageObjects/radioButtonPage";
+import WebTablesPage from "../../pageObjects/webTablesPage";
 
 context("Elements Page", () => {
   context("Text box scenarios", () => {
@@ -21,45 +23,56 @@ context("Elements Page", () => {
     });
     it.only("Checkbox scenario 1", () => {
       CheckBoxPage.Plus.should("be.visible").click();
-      CheckBoxPage.Notes.should("be.visible").click({});
-      CheckBoxPage.React.should("be.visible").click();
+      CheckBoxPage.checkBoxes.contains("Notes").click();
+      CheckBoxPage.checkBoxes.contains("React").click();
+      CheckBoxPage.checkBoxes.contains("Angular").click();
+      CheckBoxPage.checkBoxes.contains("File.doc").click();
+      CheckBoxPage.Validation.should('include.text', 'notes');
+      CheckBoxPage.Validation.should('include.text', 'react');
+      CheckBoxPage.Validation.should('include.text', 'angular');
+      CheckBoxPage.Validation.should('include.text', 'wordFile');
     });
-
-
-    // Create CheckBoxPage page object
-    // Create checkbox scenario 1:
-    // Click the "+"/expand button
-    // Click Notes, React, Angular, General, Excel File.doc
-    // Validate the clicked checkboxes
-
-    // Create checkbox scenario 2:
-    // Click expand button
-    // Click Office
-    // Validate the checked checkboxes
+    it.only("Checkbox scenario 2", () => {
+      CheckBoxPage.Plus.should("be.visible").click();
+      CheckBoxPage.checkBoxes.contains("Office").click();
+      CheckBoxPage.Plus.should("be.visible").click();   // Click expand button
+      CheckBoxPage.Validation.should('include.text', 'office');
+    });
   });
 
   context("Radio button scenarios", () => {
-    // Create RadioButtons page object
-    // Scenario 1:
-    // Click yesButton
-    // validate the message
-    // click impressiveButton
-    // validate the message
-    // noButton - validate that the button exists but is disabled
+    beforeEach(() => {
+      RadioButtonPage.visit();
+    });
+    it.only("RadioButton scenario 1", () => {
+      RadioButtonPage.YesButton.click();
+      RadioButtonPage.Validation.should('include.text', 'Yes' );
+      RadioButtonPage.ImpressiveButton.click();
+      RadioButtonPage.Validation.should('include.text', 'Impressive' );
+      RadioButtonPage.NoButton.should('include.text', 'No');
+    });
   });
 
   context("Web tables scenarios", () => {
-    // Create WebTables page object
-    // Create scenario 1:
-    // Click add record button
-    // fill in the necessary information
+    beforeEach(() => {
+      WebTablesPage.visit();
+    });
+    it.only("Web tables Scenario 1:", () =>{
+      WebTablesPage.NewRecordButton.should('be.visible').click();
+      WebTablesPage.FirstName.should('be.visible').type('Viesturs');
+      WebTablesPage.LastName.should('be.visible').type('Tru');
+      WebTablesPage.Email.should('be.visible').type('trumars@lasersharks.com');
+      WebTablesPage.Age.should('be.visible').type('21');      
+      WebTablesPage.Salary.should('be.visible').type('3.50');
+      WebTablesPage.Department.should('be.visible').type('Trade');
+    });
     // click submit button
     // search for the user based on previously added information
     // validate tha the user is visible
-
-    // Create Scenario 2:
+    it.only("Web tables Scenario 2:", () =>{
     // Delete all table rows
     // Validate that we see text - No rows found
+    });
   });
 
   context("Buttons scenarios", () => {

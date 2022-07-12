@@ -7,24 +7,12 @@ class CheckBoxPage extends BasePage{
   static get Plus() {
     return cy.get("[title='Expand all']");
   }
-  static get Notes() {
-    return cy.get("[class='rct-title'Notes]");
+
+  static get checkBoxes() {
+    return cy.get("[class='rct-title']");
   }
-// Click React, Angular, General, Excel File.doc
-  static get React(){
-    return cy.get("[id='tree-node-react']");
-  }
-  static get Angular(){
-    return cy.get("[class='']");
-  }
-  static get General(){
-    return cy.get("[class='']");
-  }
-  static get Excel(){
-    return cy.get("[class='']");
-  }
-  static get FileDoc(){
-    return cy.get("[class='']");
+  static get Validation() {
+    return cy.get("[class='text-success']");
   }
 
 }
