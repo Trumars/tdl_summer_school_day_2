@@ -1,4 +1,4 @@
-// import page objects
+import BasePage from "../pageObjects/BasePage";
 
 context("Interactions", () => {
   context("Selectable", () => {

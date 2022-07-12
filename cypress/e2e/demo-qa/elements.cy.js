@@ -1,20 +1,31 @@
 import TextBoxPage from "../../pageObjects/textBoxPage";
+import CheckBoxPage from "../../pageObjects/checkBoxPage";
 
 context("Elements Page", () => {
   context("Text box scenarios", () => {
     beforeEach(() => {
       TextBoxPage.visit();
     });
-
-    // Create texbox scenario
-    // fill in textboxes with necessary information
-    // validate the paragraphs
     it("Filling in Text Boxes", () => {
-      // add the necessary steps
+      TextBoxPage.Name.should("be.visible").type("Viesturs T");
+      TextBoxPage.Email.should("be.visible").type("trumars@lasersharks.com");
+      TextBoxPage.CurrentAddress.should("be.visible").type("Liepaja, Inzenieru iela 101B");
+      TextBoxPage.PermanentAddress.should("be.visible").type("Ventspis, Sporta iela 10A");
+      TextBoxPage.Submit.should("be.visible").click();
     });
   });
 
   context("Check box scenarios", () => {
+    beforeEach(() => {
+      CheckBoxPage.visit();
+    });
+    it.only("Checkbox scenario 1", () => {
+      CheckBoxPage.Plus.should("be.visible").click();
+      CheckBoxPage.Notes.should("be.visible").click({});
+      CheckBoxPage.React.should("be.visible").click();
+    });
+
+
     // Create CheckBoxPage page object
     // Create checkbox scenario 1:
     // Click the "+"/expand button
